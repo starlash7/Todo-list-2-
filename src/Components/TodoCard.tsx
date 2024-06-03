@@ -25,6 +25,8 @@ const TodoCard: FC<TodoCardProps> = ({ todo, todos, setTodos }) => {
     });
 
     setTodos(temp);
+
+    localStorage.setItem("savedTodos", JSON.stringify(temp));
   };
 
   const onClickUpdate = () => {
@@ -40,6 +42,8 @@ const TodoCard: FC<TodoCardProps> = ({ todo, todos, setTodos }) => {
 
     setTodos(temp);
     setIsUpdateOpen(false);
+
+    localStorage.setItem("savedTodos", JSON.stringify(temp));
   };
 
   const onClickDelete = () => {
@@ -50,11 +54,13 @@ const TodoCard: FC<TodoCardProps> = ({ todo, todos, setTodos }) => {
     });
 
     setTodos(temp);
+
+    localStorage.setItem("savedTodos", JSON.stringify(temp));
   };
 
   return (
     <>
-      <Flex bgColor="yellow.100" px={4} py={2} rounded="lg" gap={1}>
+      <Flex bgColor="white" px={4} py={2} rounded="lg" gap={1}>
         {isUpdateOpen ? (
           <Flex>
             <Input
@@ -77,7 +83,7 @@ const TodoCard: FC<TodoCardProps> = ({ todo, todos, setTodos }) => {
           </Text>
         )}
         <Button
-          colorScheme="purple"
+          colorScheme="blue"
           onClick={() => setIsUpdateOpen(!isUpdateOpen)}
         >
           {isUpdateOpen ? <FiX /> : <FiEdit3 />}
